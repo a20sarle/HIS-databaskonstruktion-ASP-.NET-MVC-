@@ -15,6 +15,7 @@ namespace dbsk1_2018
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
+            Console.WriteLine("Test commit and push to Github");
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
