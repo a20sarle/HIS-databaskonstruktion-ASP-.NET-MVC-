@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<h2>Write part of customer name</h2>
+<form method="post" action="@Url.Action("SearchCustomers", "Home")">
+    <label>
+        Name:
+        <input type="text" name="name" value="" placeholder="Customer Name" />
+    </label>
+    <input type="submit" value="Search" />
+</form>

@@ -1,0 +1,28 @@
+﻿@using System.Data
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Customers</h2>
+@{
+    DataTable StudentsTable = ViewBag.AllCustomersTable;
+    string tableHeader = "List of all customers";
+}
+<table>
+    <caption>@tableHeader</caption>
+    <tr>
+        @foreach (DataColumn dataColumn in ViewBag.AllCustomersTable.Columns)
+        {
+            <th>@dataColumn.ColumnName</th>
+        }
+    </tr>
+    @foreach (DataRow customerRow in ViewBag.AllCustomersTable.Rows)
+    {
+        <tr>
+            @for (int i = 0; i < ViewBag.AllCustomersTable.Columns.Count; ++i)
+            {
+                <td>@customerRow[i]</td>
+            }
+            <td>@Html.ActionLink("Delete", "DeleteCustomer", "Home", new { custno = customerRow["custno"] }, new { title = "Click to delete customer " + customerRow["NAME"] })</td>
+        </tr>
+    }
+</table>

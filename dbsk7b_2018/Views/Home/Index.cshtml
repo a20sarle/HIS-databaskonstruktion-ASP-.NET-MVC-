@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<h2>Customers</h2>
+<table>
+    <tr>
+        @foreach (var dataColumn in ViewBag.CustomerTable.Columns)
+        {
+            <th>@dataColumn.ColumnName</th>
+        }
+    </tr>
+    @foreach (var customerRow in ViewBag.CustomerTable.Rows)
+    {
+        <tr>
+            @for (int i = 0; i < ViewBag.CustomerTable.Columns.Count; ++i)
+            {
+                <td>@customerRow[i]</td>
+            }
+        </tr>
+    }
+</table>
+<br />
+
+<form method="post" action="@Url.Action("InsertCustomer", "Home")">
+    <label>Custno: <input type="text" name="custno"></label>
+    <label>SSN: <input type="text" name="ssn"></label>
+    <label>Name: <input type="text" name="name"></label>
+    <input type="submit" value="Add Customer" />
+</form>

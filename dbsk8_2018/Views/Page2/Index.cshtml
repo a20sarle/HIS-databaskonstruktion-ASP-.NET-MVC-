@@ -1,0 +1,24 @@
+﻿@using System.Data
+@model DataTable
+@{
+    ViewBag.Title = "Page2";
+}
+<h2>Page2 - List of all study programs</h2>
+<table>
+    <tr>
+        @foreach (DataColumn dataColumn in Model.Columns)
+        {
+            <th>@dataColumn.ColumnName</th>
+        }
+    </tr>
+    @foreach (DataRow studyProgramRow in Model.Rows)
+    {
+        <tr>
+            @for (int i = 0; i < Model.Columns.Count; ++i)
+            {
+                <td>@studyProgramRow[i]</td>
+            }
+        </tr>
+    }
+</table>
+@Html.ActionLink("Link back to home", "Index", "Home")

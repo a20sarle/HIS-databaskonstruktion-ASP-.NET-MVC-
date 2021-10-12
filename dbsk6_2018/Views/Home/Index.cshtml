@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<h2>Find Invoice Rows</h2>
+<form method="post" action="@Url.Action("SearchInvoiceRows", "Home")">
+    <label>
+        Customer:
+        <select name="custno">
+            @foreach (var row in ViewBag.AllCustomersTable.Rows)
+            {
+                <option value="@row["CUSTNO"]">@row["NAME"]</option>
+            }
+        </select>
+    </label>
+    <input type="submit" value="Search" />
+</form>
