@@ -16,6 +16,10 @@ namespace dbsk1_2018.Controllers
             int number = 2;
             ViewBag.HelloText = text;
             ViewBag.ANumber = number;
+
+            string test = "just a tst";            
+            ViewBag.test = test;
+            
             return View();
         }
     }
