@@ -15,6 +15,8 @@ namespace dbsk1_2018.Controllers
             StudentsModel sm = new StudentsModel();
             ViewBag.onskelista = sm.GetOnskelista();
 
+            ViewBag.onskelistaLevererade = sm.GetOnskelistaLevererade();
+
             return View();
         }
     }

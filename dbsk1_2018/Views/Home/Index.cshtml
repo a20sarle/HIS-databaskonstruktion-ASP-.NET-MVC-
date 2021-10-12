@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
-<h2>Students</h2>
+<h2>Önskelistor</h2>
 <table>
     <tr>
         @foreach (var dataColumn in ViewBag.onskelista.Columns)
@@ -13,6 +13,25 @@
     {
         <tr>
             @for (int i = 0; i < ViewBag.onskelista.Columns.Count; ++i)
+            {
+                <td>@customerRow[i]</td>
+            }
+        </tr>
+    }
+</table>
+
+<h2>Levererade önskelistor</h2>
+<table>
+    <tr>
+        @foreach (var dataColumn in ViewBag.onskelistaLevererade.Columns)
+        {
+            <th>@dataColumn.ColumnName</th>
+        }
+    </tr>
+    @foreach (var customerRow in ViewBag.onskelistaLevererade.Rows)
+    {
+        <tr>
+            @for (int i = 0; i < ViewBag.onskelistaLevererade.Columns.Count; ++i)
             {
                 <td>@customerRow[i]</td>
             }

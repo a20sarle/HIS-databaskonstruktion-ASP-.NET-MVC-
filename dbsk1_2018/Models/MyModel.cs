@@ -24,4 +24,20 @@ public class StudentsModel
 
         return onskelista;
     }
+
+    public DataTable GetOnskelistaLevererade()
+    {
+        MySqlConnection dbcon = new MySqlConnection(connectionString);
+
+        dbcon.Open();
+
+        MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM onskelistaLevererade;", dbcon);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds, "result");
+        DataTable onskelistaLevererade = ds.Tables["result"];
+
+        dbcon.Close();
+
+        return onskelistaLevererade;
+    }
 }
