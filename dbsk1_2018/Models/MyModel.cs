@@ -12,6 +12,7 @@ public class StudentsModel
     public void Insert(string onskelista_artal, string onskelista_beskrivning, int onskelista_levererad)
     {
         MySqlConnection dbcon = new MySqlConnection(connectionString);
+
         dbcon.Open();
 
         MySqlCommand cmd = new MySqlCommand();
