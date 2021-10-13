@@ -13,8 +13,8 @@ namespace dbsk1_2018.Controllers
         public IActionResult Index()
         {
             StudentsModel sm = new StudentsModel();
-            ViewBag.onskelista = sm.GetOnskelista();
 
+            ViewBag.onskelista = sm.GetOnskelista();
             ViewBag.onskelistaLevererade = sm.GetOnskelistaLevererade();
 
             return View();
