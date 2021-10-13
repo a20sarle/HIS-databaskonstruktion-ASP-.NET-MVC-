@@ -1,6 +1,51 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
+
+@*
+
+            --==
+        if(isset($_POST['artal'])){
+            $query = 'INSERT INTO onskelista(artal, levererad, beskrivning) VALUES (:artal, :levererad, :beskrivning);';
+            $stmt = $pdo -> prepare($query);
+            $stmt -> bindParam(':artal', $_POST['artal']);
+            $stmt -> bindParam(':levererad', $_POST['levererad']);
+            $stmt -> bindParam(':beskrivning', $_POST['beskrivning']);
+            $stmt -> execute();
+        }
+
+        <!-- INSERT INTO på onskelista -->
+    <form action="PHP.php" method="post">
+        <label for="artal">Önskelista:</label>
+        <input type="text" id="artal" name="artal" placeholder="Årtal"><br>
+        <label for="beskrivning">Beskrivning:</label>
+        <input type="text" id="beskrivning" name="beskrivning" placeholder="Beskrivning"><br>
+        <!-- <label for="levererad">Levererad (måste vara 1)</label> -->
+        <input type="number" id="levererad" name="levererad" placeholder="must be 1" hidden value="1"><br>
+        <input type="submit" value="Lägg till önskelista">
+    </form>
+    </div>
+    ==--
+
+*@
+
+
+<h2>Lägg till önskelista</h2>
+<form method="post" action="@Url.Action("Insert", "Home")">
+    <label>
+        Önskelista:
+        <input type="text" name="onskelista_artal" value="" placeholder="Årtal" />
+    </label>
+    <label>
+        Beskrivning:
+        <input type="text" name="onskelista_beskrivning" value="" placeholder="Beskrivning" />
+    </label>
+    <label>
+        <input type="number" name="onskelista_levererad" value="1" hidden />
+    </label>
+    <input type="submit" value="Lägg till önskelista" />
+</form>
+
 <h2>Önskelistor</h2>
 <table>
     <tr>

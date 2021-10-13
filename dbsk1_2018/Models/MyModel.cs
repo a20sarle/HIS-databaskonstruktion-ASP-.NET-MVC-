@@ -9,6 +9,23 @@ public class StudentsModel
 {
     private string connectionString = "Server=localhost;Database=a20sarle_dk;Port=3307;User ID=sqllab;Password=Tomten2009;Pooling=false;SslMode=none;convert zero datetime=True;";
 
+    public void Insert(string onskelista_artal, string onskelista_beskrivning, int onskelista_levererad)
+    {
+        MySqlConnection dbcon = new MySqlConnection(connectionString);
+        dbcon.Open();
+
+        MySqlCommand cmd = new MySqlCommand();
+        cmd.Connection = dbcon;
+        cmd.CommandText = "INSERT INTO onskelista(artal,beskrivning,levererad) VALUES(@ARTAL,@BESKRIVNING,@LEVERERAD)";
+        cmd.Parameters.AddWithValue("@ARTAL", onskelista_artal);
+        cmd.Parameters.AddWithValue("@BESKRIVNING", onskelista_beskrivning);
+        cmd.Parameters.AddWithValue("@LEVERERAD", onskelista_levererad);
+        cmd.ExecuteNonQuery();
+
+        dbcon.Close();
+
+    }
+
     public DataTable GetOnskelista()
     {
         MySqlConnection dbcon = new MySqlConnection(connectionString);
