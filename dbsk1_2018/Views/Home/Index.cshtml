@@ -3,8 +3,8 @@
 }
 
 @*
---==
-==--
+        --==
+        ==--
 *@
 
 
@@ -23,6 +23,32 @@
     </label>
     <input type="submit" value="Lägg till önskelista" />
 </form>
+
+<h2>Uppdatera önskelista</h2>
+<table style="text-align:left;">
+    <tr>
+        <th>Årtal</th>
+        <th>Lev.</th>
+        <th>Beskrivning</th>
+    </tr>
+    @foreach (var row in ViewBag.onskelista.Rows)
+    {
+        <tr>
+            <td>@row["artal"]</td>
+            <td>@row["levererad"]</td>
+            <td>@row["beskrivning"]</td>
+            <td>
+                <!-- Uppdaterar -->
+                <form method='get' action="@Url.Action("Update", "Home")">
+                    <input type='text' name='upd_artal' value='@row["artal"]'>
+                    <input type='number' name='upd_levererad' placeholder='1 or 0' min='0' max='1' required>
+                    <input type='submit' value='uppdatera'>
+                </form>
+            </td>
+        </tr>
+
+    }
+</table>
 
 <h2>Önskelistor</h2>
 <table>
@@ -61,4 +87,4 @@
         </tr>
     }
 </table>
-<br />
+

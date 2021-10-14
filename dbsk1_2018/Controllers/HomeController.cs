@@ -14,6 +14,13 @@ namespace dbsk1_2018.Controllers
     {
         private StudentsModel sm = new StudentsModel();
 
+        public IActionResult Update(string upd_artal, int upd_levererad)
+        {
+            // används till update av önskelistor.levererad
+           sm.Update(upd_artal, upd_levererad);
+           return RedirectToAction("Index");
+        }
+
         public IActionResult Insert(string onskelista_artal, string onskelista_beskrivning, int onskelista_levererad)
         {
             // används till insert av önskelistor
