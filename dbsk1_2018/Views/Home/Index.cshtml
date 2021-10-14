@@ -3,8 +3,8 @@
 }
 
 @*
-        --==
-        ==--
+    --==
+    ==--
 *@
 
 
@@ -88,3 +88,42 @@
     }
 </table>
 
+<h2>Visa önskelistsdetaljer</h2>
+<form method="post" action="@Url.Action("dropdownListradArtal", "Home")">
+    <label>
+        Önskelista:
+        <select name="visa_artal">
+            @foreach (var row in ViewBag.dropdownListrad.Rows)
+            {
+                <option value="@row["onskelistaArtal"]">@row["onskelistaArtal"]</option>
+            }
+        </select>
+    </label>
+    <input type="submit" value="Visa" />
+</form>
+
+<h2>Resultat av visa önskelistsdetaljer</h2>
+@if (ViewBag.SearchResults != null && ((System.Data.DataTable)ViewBag.SearchResults).Rows.Count > 0)
+{
+    <table>
+        <tr>
+            @foreach (var dataColumn in ViewBag.SearchResults.Columns)
+            {
+                <th>@dataColumn.ColumnName</th>
+            }
+        </tr>
+        @foreach (var row in ViewBag.SearchResults.Rows)
+        {
+            <tr>
+                @for (int i = 0; i < ViewBag.SearchResults.Columns.Count; ++i)
+                {
+                    <td>@row[i]</td>
+                }
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>Inga detaljer hittades</p>
+}

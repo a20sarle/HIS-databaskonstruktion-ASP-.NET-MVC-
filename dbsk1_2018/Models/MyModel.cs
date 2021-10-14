@@ -75,4 +75,36 @@ public class StudentsModel
 
         return onskelistaLevererade;
     }
+
+    public DataTable dropdownListradArtal()
+    {
+        MySqlConnection dbcon = new MySqlConnection(connectionString);
+
+        dbcon.Open();
+
+        MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM listrad, onskelista WHERE onskelista.artal=listrad.onskelistaArtal GROUP BY listrad.onskelistaArtal;", dbcon);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds, "result");
+        DataTable onskelistaArtalTable = ds.Tables["result"];
+
+        dbcon.Close();
+
+        return onskelistaArtalTable;
+    }
+    public DataTable visaOnskelistaDetaljer(string visa_artal)
+    {
+        MySqlConnection dbcon = new MySqlConnection(connectionString);
+
+        dbcon.Open();
+
+        MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM listrad, leksakNamn, onskelista WHERE listrad.onskelistaArtal = @VISA_ARTAL AND onskelista.artal = listrad.onskelistaArtal AND listrad.leksakIdnr=leksakNamn.namnCode;", dbcon);
+        adapter.SelectCommand.Parameters.AddWithValue("@VISA_ARTAL", visa_artal);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds, "result");
+        DataTable detaljer = ds.Tables["result"];
+
+        dbcon.Close();
+
+        return detaljer;
+    }
 }
