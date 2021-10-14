@@ -107,18 +107,16 @@
 {
     <table>
         <tr>
-            @foreach (var dataColumn in ViewBag.SearchResults.Columns)
-            {
-                <th>@dataColumn.ColumnName</th>
-            }
+            <th>Önskelista</th>
+            <th>Antal</th>
+            <th>Leksak</th>
         </tr>
         @foreach (var row in ViewBag.SearchResults.Rows)
         {
             <tr>
-                @for (int i = 0; i < ViewBag.SearchResults.Columns.Count; ++i)
-                {
-                    <td>@row[i]</td>
-                }
+                <td>@row["onskelistaArtal"]</td>
+                <td>@row["antal"]</td>
+                <td>@row["namn"]</td>
             </tr>
         }
     </table>
