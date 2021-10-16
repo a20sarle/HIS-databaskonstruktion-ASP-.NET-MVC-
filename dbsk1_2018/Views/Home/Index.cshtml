@@ -38,7 +38,7 @@
             <td>@row["levererad"]</td>
             <td>@row["beskrivning"]</td>
             <td>
-               
+
                 <!-- Uppdaterar -->
                 <form method='get' action="@Url.Action("Update", "Home")">
                     <input type='text' name='upd_artal' value='@row["artal"]'>
@@ -97,6 +97,21 @@
         </tr>
     }
 </table>
+
+<h2>Listbox för levererade önskelistor</h2>
+<select size='3'>
+    @foreach (var dataRow in ViewBag.onskelistaLevererade.Rows)
+    {
+        <optgroup label='Önskelista: @dataRow["artal"]'>
+            <option>
+                Levererad: @dataRow["levererad"]
+            </option>
+            <option>
+                Beskrivning: @dataRow["beskrivning"]
+            </option>
+        </optgroup>
+    }
+</select>
 
 <h2>Visa önskelistsdetaljer</h2>
 <form method="post" action="@Url.Action("dropdownListradArtal", "Home")">
