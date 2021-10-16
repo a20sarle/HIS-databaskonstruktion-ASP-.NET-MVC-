@@ -35,7 +35,7 @@ namespace dbsk1_2018.Controllers
             // hämtar tabeller 'onskelista' & 'onskelistaLevererade'
             ViewBag.onskelista = sm.GetOnskelista();
             ViewBag.onskelistaLevererade = sm.GetOnskelistaLevererade();
-            ViewBag.dropdownListrad = sm.dropdownListradArtal();
+            ViewBag.dropdownListrad = sm.dropdownListradArtalModel();
             //ViewBag.dropdownListrad = sp.dropdownListradArtal();
             return View();
         }
@@ -45,10 +45,9 @@ namespace dbsk1_2018.Controllers
         {
             ViewBag.onskelista = sm.GetOnskelista();
             ViewBag.onskelistaLevererade = sm.GetOnskelistaLevererade();
-            ViewBag.dropdownListrad = sm.dropdownListradArtal();
+            ViewBag.dropdownListrad = sm.dropdownListradArtalModel();
             ViewBag.SearchResults = sm.visaOnskelistaDetaljer(visa_artal);
             return View("Index");
-            // return RedirectToAction("Index");
         }
     }
 }

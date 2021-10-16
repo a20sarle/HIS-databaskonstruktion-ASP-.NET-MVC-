@@ -76,7 +76,7 @@ public class StudentsModel
         return onskelistaLevererade;
     }
 
-    public DataTable dropdownListradArtal()
+    public DataTable dropdownListradArtalModel()
     {
         MySqlConnection dbcon = new MySqlConnection(connectionString);
 
@@ -91,14 +91,14 @@ public class StudentsModel
 
         return onskelistaArtalTable;
     }
-    public DataTable visaOnskelistaDetaljer(string visa_artal)
+    public DataTable visaOnskelistaDetaljer(string visa_artal_result)
     {
         MySqlConnection dbcon = new MySqlConnection(connectionString);
 
         dbcon.Open();
 
         MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM listrad, leksakNamn, onskelista WHERE listrad.onskelistaArtal = @VISA_ARTAL AND onskelista.artal = listrad.onskelistaArtal AND listrad.leksakIdnr=leksakNamn.namnCode;", dbcon);
-        adapter.SelectCommand.Parameters.AddWithValue("@VISA_ARTAL", visa_artal);
+        adapter.SelectCommand.Parameters.AddWithValue("@VISA_ARTAL", visa_artal_result);
         DataSet ds = new DataSet();
         adapter.Fill(ds, "result");
         DataTable detaljer = ds.Tables["result"];
