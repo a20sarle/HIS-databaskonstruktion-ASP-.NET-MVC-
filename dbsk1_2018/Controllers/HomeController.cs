@@ -23,6 +23,12 @@ namespace dbsk1_2018.Controllers
            return RedirectToAction("Index");
         }
 
+        public IActionResult Move(string move_artal, int move_levererad, string move_beskrivning)
+        {
+            sm.Move(move_artal, move_levererad, move_beskrivning);
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Insert(string onskelista_artal, string onskelista_beskrivning, int onskelista_levererad)
         {
             // används till insert av önskelistor

@@ -26,6 +26,24 @@ public class StudentsModel
 
     }
 
+    public void Move(string move_artal, int move_levererad, string move_beskrivning)
+    {
+        MySqlConnection dbcon = new MySqlConnection(connectionString);
+
+        dbcon.Open();
+
+        MySqlCommand cmd = new MySqlCommand();
+        cmd.Connection = dbcon;
+        cmd.CommandText = "CALL proc_onskelista_levererade(@ARTAL, @LEVERERAD, @BESKRIVNING);";
+        cmd.Parameters.AddWithValue("@ARTAL", move_artal);
+        cmd.Parameters.AddWithValue("@LEVERERAD", move_levererad);
+        cmd.Parameters.AddWithValue("@BESKRIVNING", move_beskrivning);
+        cmd.ExecuteNonQuery();
+
+        dbcon.Close();
+
+    }
+
     public void Insert(string onskelista_artal, string onskelista_beskrivning, int onskelista_levererad)
     {
         MySqlConnection dbcon = new MySqlConnection(connectionString);

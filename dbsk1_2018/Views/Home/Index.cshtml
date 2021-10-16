@@ -38,12 +38,22 @@
             <td>@row["levererad"]</td>
             <td>@row["beskrivning"]</td>
             <td>
+               
                 <!-- Uppdaterar -->
                 <form method='get' action="@Url.Action("Update", "Home")">
                     <input type='text' name='upd_artal' value='@row["artal"]'>
                     <input type='number' name='upd_levererad' placeholder='1 or 0' min='0' max='1' required>
                     <input type='submit' value='uppdatera'>
                 </form>
+
+                <!-- Flyttar -->
+                <form method='get' action="@Url.Action("Move", "Home")">
+                    <input type='text' name='move_artal' value='@row["artal"]'>
+                    <input type='number' name='move_levererad' value='@row["levererad"]'>
+                    <input type='text' name='move_beskrivning' value='@row["beskrivning"]'>
+                    <input type='submit' name='move_onskelista' value='flytta'>
+                </form>
+
             </td>
         </tr>
 
