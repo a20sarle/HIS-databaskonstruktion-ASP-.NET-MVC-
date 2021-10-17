@@ -45,7 +45,6 @@ namespace dbsk1_2018.Controllers
             //ViewBag.dropdownListrad = sp.dropdownListradArtal();
             return View();
         }
-
         
         public IActionResult dropdownListradArtal(string visa_artal)
         {

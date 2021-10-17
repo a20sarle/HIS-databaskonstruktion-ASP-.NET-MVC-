@@ -63,10 +63,9 @@
 <h2>Önskelistor</h2>
 <table>
     <tr>
-        @foreach (var dataColumn in ViewBag.onskelista.Columns)
-        {
-            <th>@dataColumn.ColumnName</th>
-        }
+        <th>Önskelista</th>
+        <th>Lev.</th>
+        <th>Beskrivning</th>        
     </tr>
     @foreach (var customerRow in ViewBag.onskelista.Rows)
     {
@@ -82,10 +81,9 @@
 <h2>Levererade önskelistor</h2>
 <table>
     <tr>
-        @foreach (var dataColumn in ViewBag.onskelistaLevererade.Columns)
-        {
-            <th>@dataColumn.ColumnName</th>
-        }
+        <th>Önskelista</th>
+        <th>Lev.</th>
+        <th>Beskrivning</th>
     </tr>
     @foreach (var customerRow in ViewBag.onskelistaLevererade.Rows)
     {
@@ -150,3 +148,10 @@ else
 {
     <p>Inga detaljer hittades</p>
 }
+
+
+
+
+
+
+

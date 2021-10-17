@@ -124,5 +124,5 @@ public class StudentsModel
         dbcon.Close();
 
         return detaljer;
-    }
+    } 
 }
