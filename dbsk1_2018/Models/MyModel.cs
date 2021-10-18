@@ -94,6 +94,7 @@ public class StudentsModel
         return onskelistaLevererade;
     }
 
+
     public DataTable dropdownListradArtalModel()
     {
         MySqlConnection dbcon = new MySqlConnection(connectionString);
@@ -124,5 +125,52 @@ public class StudentsModel
         dbcon.Close();
 
         return detaljer;
-    } 
+    }
+
+
+    public DataTable GetByggarnisseDetaljer()
+    {
+        MySqlConnection dbcon = new MySqlConnection(connectionString);
+
+        dbcon.Open();
+
+        MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT idnr, namn FROM byggarnisse;", dbcon);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds, "result");
+        DataTable byggarnisseLink = ds.Tables["result"];
+
+        dbcon.Close();
+
+        return byggarnisseLink;
+    }
+    public DataTable byggarnisseDetaljer(int byggarnisse_idnr)
+    {
+        MySqlConnection dbcon = new MySqlConnection(connectionString);
+
+        dbcon.Open();
+
+        MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT byggarnisse.idnr, byggarnisse.namn AS byggarnisseNamn, byggarnisse.kladfarg, byggarnisse.mellanchefIdnr, byggarnisse.notter, byggarnisse.russin, byggarnisse.sangnr, byggarnisse.barack, mellanchef.idnr, mellanchef.namn AS mellanchefNamn, specialitet.specialitet, specialitet.byggarnisseIdnr, matByggarnisse.matNamn, matByggarnisse.byggarnisseIdnr, mat.namn AS MatNamn, mat.smak, mat.tillverkare, mat.maginiva FROM byggarnisse, mellanchef, specialitet, matByggarnisse, mat WHERE byggarnisse.idnr=@IDNR AND byggarnisse.mellanchefIdnr=mellanchef.idnr AND specialitet.byggarnisseIdnr=byggarnisse.idnr AND matByggarnisse.byggarnisseIdnr=byggarnisse.idnr AND matByggarnisse.matNamn=mat.namn; ", dbcon);
+        adapter.SelectCommand.Parameters.AddWithValue("@IDNR", byggarnisse_idnr);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds, "result");
+        DataTable byggarnisseDetaljer = ds.Tables["result"];
+
+        dbcon.Close();
+
+        return byggarnisseDetaljer;
+    }
+    /*public void byggarnisseDetaljer(int byggarnisse_idnr)
+    {
+        MySqlConnection dbcon = new MySqlConnection(connectionString);
+
+        dbcon.Open();
+
+        MySqlCommand cmd = new MySqlCommand();
+        cmd.Connection = dbcon;
+        cmd.CommandText = "SELECT byggarnisse.idnr, byggarnisse.namn AS byggarnisseNamn, byggarnisse.kladfarg, byggarnisse.mellanchefIdnr, byggarnisse.notter, byggarnisse.russin, byggarnisse.sangnr, byggarnisse.barack, mellanchef.idnr, mellanchef.namn AS mellanchefNamn, specialitet.specialitet, specialitet.byggarnisseIdnr, matByggarnisse.matNamn, matByggarnisse.byggarnisseIdnr, mat.namn AS MatNamn, mat.smak, mat.tillverkare, mat.maginiva FROM byggarnisse, mellanchef, specialitet, matByggarnisse, mat WHERE byggarnisse.idnr = @IDNR AND byggarnisse.mellanchefIdnr=mellanchef.idnr AND specialitet.byggarnisseIdnr=byggarnisse.idnr AND matByggarnisse.byggarnisseIdnr=byggarnisse.idnr AND matByggarnisse.matNamn=mat.namn;";
+        cmd.Parameters.AddWithValue("@IDNR", byggarnisse_idnr);
+        cmd.ExecuteNonQuery();
+
+        dbcon.Close();
+    }*/
 }

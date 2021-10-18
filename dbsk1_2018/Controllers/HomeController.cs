@@ -13,7 +13,6 @@ namespace dbsk1_2018.Controllers
     public class HomeController : Controller
     {
         private StudentsModel sm = new StudentsModel();
-        //private dropdownListrad sp = new dropdownListrad();
         //https://dugga.iit.his.se/DuggaSys/codeviewer.php?exampleid=6173&courseid=4&coursename=Databaskonstruktion&cvers=22521&lid=10279
 
         public IActionResult Update(string upd_artal, int upd_levererad)
@@ -42,6 +41,7 @@ namespace dbsk1_2018.Controllers
             ViewBag.onskelista = sm.GetOnskelista();
             ViewBag.onskelistaLevererade = sm.GetOnskelistaLevererade();
             ViewBag.dropdownListrad = sm.dropdownListradArtalModel();
+            ViewBag.byggarnisse = sm.GetByggarnisseDetaljer();
             //ViewBag.dropdownListrad = sp.dropdownListradArtal();
             return View();
         }
@@ -53,6 +53,15 @@ namespace dbsk1_2018.Controllers
             ViewBag.dropdownListrad = sm.dropdownListradArtalModel();
             ViewBag.SearchResults = sm.visaOnskelistaDetaljer(visa_artal);
             return View("Index");
+        }
+
+
+        public IActionResult byggarnisseDetaljer(int byggarnisse_idnr)
+        {
+            ViewBag.byggarnisse = sm.byggarnisseDetaljer(byggarnisse_idnr);
+            //ViewBag.byggarnisse = sm.byggarnisseDetaljer(1); dubbelkolla om modellen kördes rätt
+
+            return View();
         }
     }
 }

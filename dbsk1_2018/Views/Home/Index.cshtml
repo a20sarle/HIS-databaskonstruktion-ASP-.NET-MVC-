@@ -65,7 +65,7 @@
     <tr>
         <th>Önskelista</th>
         <th>Lev.</th>
-        <th>Beskrivning</th>        
+        <th>Beskrivning</th>
     </tr>
     @foreach (var customerRow in ViewBag.onskelista.Rows)
     {
@@ -149,9 +149,9 @@ else
     <p>Inga detaljer hittades</p>
 }
 
-
-
-
-
-
-
+<h2>Länk till byggarniss-detaljer</h2>
+    @foreach (var customerRow in ViewBag.byggarnisse.Rows)
+    {
+        @Html.ActionLink((string)@customerRow["namn"], "byggarnisseDetaljer", "Home", new { byggarnisse_idnr = @customerRow["idnr"] });
+        <br />
+    }

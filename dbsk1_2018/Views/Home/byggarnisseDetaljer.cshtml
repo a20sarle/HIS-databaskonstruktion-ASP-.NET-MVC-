@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@*
+    --==
+    ==--
+*@
+
+<h2>Byggarnisse detaljer</h2>
+<table>
+    <tr>
+        @foreach (var dataColumn in ViewBag.byggarnisse.Columns)
+        {
+            <th>@dataColumn.ColumnName</th>
+        }
+    </tr>
+    @foreach (var customerRow in ViewBag.byggarnisse.Rows)
+    {
+        <tr>
+            @for (int i = 0; i < ViewBag.byggarnisse.Columns.Count; ++i)
+            {
+                <td>@customerRow[i]</td>
+            }
+        </tr>
+    }
+</table>
