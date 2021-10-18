@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<table>
+    <tr>
+        @foreach (var dataColumn in ViewBag.baracktabell.Columns)
+        {
+            <th>@dataColumn.ColumnName</th>
+        }
+    </tr>
+    @foreach (var customerRow in ViewBag.baracktabell.Rows)
+    {
+        <tr>
+            @for (int i = 0; i < ViewBag.baracktabell.Columns.Count; ++i)
+            {
+                <td>@customerRow[i]</td>
+            }
+        </tr>
+    }
+</table>

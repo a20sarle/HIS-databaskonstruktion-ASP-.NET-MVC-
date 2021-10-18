@@ -13,6 +13,7 @@ namespace dbsk1_2018.Controllers
     public class HomeController : Controller
     {
         private StudentsModel sm = new StudentsModel();
+        private ByggarnisseModel bm = new ByggarnisseModel();
 
         public IActionResult Update(string upd_artal, int upd_levererad)
         {
@@ -60,6 +61,18 @@ namespace dbsk1_2018.Controllers
             ViewBag.byggarnisse = sm.byggarnisseDetaljer(byggarnisse_idnr);
             //ViewBag.byggarnisse = sm.byggarnisseDetaljer(1); dubbelkolla om modellen kördes rätt
 
+            return View();
+        }
+
+        public IActionResult Kladfarg(string visa_kladfarg)
+        {
+            ViewBag.kladfargtabell = bm.KladfargModel(visa_kladfarg);
+            return View();
+        }
+
+        public IActionResult Barack(string visa_barack)
+        {
+            ViewBag.baracktabell = bm.BarackModel(visa_barack);
             return View();
         }
     }

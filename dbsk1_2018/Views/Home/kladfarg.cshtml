@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<table>
+    <tr>
+        @foreach (var dataColumn in ViewBag.kladfargtabell.Columns)
+        {
+            <th>@dataColumn.ColumnName</th>
+        }
+    </tr>
+    @foreach (var customerRow in ViewBag.kladfargtabell.Rows)
+    {
+        <tr>
+            @for (int i = 0; i < ViewBag.kladfargtabell.Columns.Count; ++i)
+            {
+                <td>@customerRow[i]</td>
+            }
+        </tr>
+    }
+</table>

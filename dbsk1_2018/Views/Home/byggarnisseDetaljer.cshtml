@@ -6,23 +6,63 @@
     --==
     ==--
 *@
-
 <h2>Byggarnisse detaljer</h2>
 <table>
-    <tr>
-        @foreach (var dataColumn in ViewBag.byggarnisse.Columns)
+        @foreach (var customerRow in ViewBag.byggarnisse.Rows)
         {
-            <th>@dataColumn.ColumnName</th>
+            <tr>
+                <th>Byggarnisse namn</th>
+                <td>@customerRow["byggarnisseNamn"]</td>
+            </tr>
+            <tr>
+                <th>Mellanchef namn</th>
+                <td>@customerRow["mellanchefNamn"]</td>
+            </tr>
+            <tr>
+                <th>Klädfärg</th>
+                <td>@customerRow["kladfarg"]</td>
+
+                <td>
+                    <form method='get' action="@Url.Action("Kladfarg", "Home")">
+                        <input type='text' name='visa_kladfarg' value='@customerRow["kladfarg"]'>
+                        <input type='submit' value='visa arbetslag @customerRow["kladfarg"]'>
+                    </form>
+                </td>
+
+            </tr>
+            <tr>
+                <th>Sängnr</th>
+                <td>@customerRow["sangnr"]</td>
+            </tr>
+            <tr>
+                <th>Barack</th>
+                <td>@customerRow["barack"]</td>
+
+                <td>
+                    <form method='get' action="@Url.Action("Barack", "Home")">
+                        <input type='number' name='visa_barack' value='@customerRow["barack"]'>
+                        <input type='submit' value='visa de som delar barack @customerRow["barack"]'>
+                    </form>
+                </td>
+                
+            </tr>
+            <tr>
+                <th>Nötter</th>
+                <td>@customerRow["notter"]</td>
+            </tr>
+            <tr>
+                <th>Russin</th>
+                <td>@customerRow["russin"]</td>
+            </tr>
+            <tr>
+                <th>Specialitet</th>
+                <td>@customerRow["specialitet"]</td>
+            </tr>
+            <tr>
+                <th>Mat</th>
+                <td>@customerRow["matNamn"]</td>
+            </tr>
         }
-    </tr>
-    @foreach (var customerRow in ViewBag.byggarnisse.Rows)
-    {
-        <tr>
-            @for (int i = 0; i < ViewBag.byggarnisse.Columns.Count; ++i)
-            {
-                <td>@customerRow[i]</td>
-            }
-        </tr>
-    }
+    
 </table>
 
