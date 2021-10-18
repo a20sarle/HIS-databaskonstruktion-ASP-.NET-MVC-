@@ -150,7 +150,7 @@ else
 }
 
 <h2>Länk till byggarniss-detaljer</h2>
-    @foreach (var customerRow in ViewBag.byggarnisse.Rows)
+@foreach (var customerRow in ViewBag.byggarnisseOne.Rows)
     {
         @Html.ActionLink((string)@customerRow["namn"], "byggarnisseDetaljer", "Home", new { byggarnisse_idnr = @customerRow["idnr"] });
         <br />

@@ -159,18 +159,4 @@ public class StudentsModel
 
         return byggarnisseDetaljer;
     }
-    /*public void byggarnisseDetaljer(int byggarnisse_idnr)
-    {
-        MySqlConnection dbcon = new MySqlConnection(connectionString);
-
-        dbcon.Open();
-
-        MySqlCommand cmd = new MySqlCommand();
-        cmd.Connection = dbcon;
-        cmd.CommandText = "SELECT byggarnisse.idnr, byggarnisse.namn AS byggarnisseNamn, byggarnisse.kladfarg, byggarnisse.mellanchefIdnr, byggarnisse.notter, byggarnisse.russin, byggarnisse.sangnr, byggarnisse.barack, mellanchef.idnr, mellanchef.namn AS mellanchefNamn, specialitet.specialitet, specialitet.byggarnisseIdnr, matByggarnisse.matNamn, matByggarnisse.byggarnisseIdnr, mat.namn AS MatNamn, mat.smak, mat.tillverkare, mat.maginiva FROM byggarnisse, mellanchef, specialitet, matByggarnisse, mat WHERE byggarnisse.idnr = @IDNR AND byggarnisse.mellanchefIdnr=mellanchef.idnr AND specialitet.byggarnisseIdnr=byggarnisse.idnr AND matByggarnisse.byggarnisseIdnr=byggarnisse.idnr AND matByggarnisse.matNamn=mat.namn;";
-        cmd.Parameters.AddWithValue("@IDNR", byggarnisse_idnr);
-        cmd.ExecuteNonQuery();
-
-        dbcon.Close();
-    }*/
 }
