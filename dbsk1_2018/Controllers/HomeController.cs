@@ -42,6 +42,7 @@ namespace dbsk1_2018.Controllers
             ViewBag.onskelistaLevererade = sm.GetOnskelistaLevererade();
             ViewBag.dropdownListrad = sm.dropdownListradArtalModel();
             ViewBag.byggarnisseOne = sm.GetByggarnisseDetaljer();
+            ViewBag.resultsSumOnskelista = sm.SumModel();
             //ViewBag.dropdownListrad = sp.dropdownListradArtal();
             return View();
         }
@@ -53,6 +54,7 @@ namespace dbsk1_2018.Controllers
             ViewBag.dropdownListrad = sm.dropdownListradArtalModel();
             ViewBag.SearchResults = sm.visaOnskelistaDetaljer(visa_artal);
             ViewBag.byggarnisseOne = sm.GetByggarnisseDetaljer();
+            ViewBag.resultsSumOnskelista = sm.SumModel();
             return View("Index");
         }
 

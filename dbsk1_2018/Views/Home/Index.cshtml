@@ -151,7 +151,33 @@ else
 
 <h2>Länk till byggarniss-detaljer</h2>
 @foreach (var customerRow in ViewBag.byggarnisseOne.Rows)
+{
+    @Html.ActionLink((string)@customerRow["namn"], "byggarnisseDetaljer", "Home", new { byggarnisse_idnr = @customerRow["idnr"] });
+    <br />
+}
+
+<h2>Genomsnittliga priset av leksak</h2>
+@if (ViewBag.resultsSumOnskelista != null && ((System.Data.DataTable)ViewBag.resultsSumOnskelista).Rows.Count > 0)
+{
+<table>
+    <tr>
+        @foreach (var dataColumn in ViewBag.resultsSumOnskelista.Columns)
+        {
+            <th>@dataColumn.ColumnName</th>
+        }
+    </tr>
+    @foreach (var customerRow in ViewBag.resultsSumOnskelista.Rows)
     {
-        @Html.ActionLink((string)@customerRow["namn"], "byggarnisseDetaljer", "Home", new { byggarnisse_idnr = @customerRow["idnr"] });
-        <br />
+        <tr>
+            @for (int i = 0; i < ViewBag.resultsSumOnskelista.Columns.Count; ++i)
+            {
+                <td>@customerRow[i]</td>
+            }
+        </tr>
     }
+</table>
+}
+else
+{
+    <p>Ingen summa hittades</p>
+}

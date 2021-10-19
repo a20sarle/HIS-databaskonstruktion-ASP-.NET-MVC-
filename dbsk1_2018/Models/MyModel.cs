@@ -44,6 +44,24 @@ public class StudentsModel
 
     }
 
+    public DataTable SumModel()
+    {
+        MySqlConnection dbcon = new MySqlConnection(connectionString);
+
+        dbcon.Open();
+
+        MySqlCommand cmd = new MySqlCommand();
+        cmd.Connection = dbcon;
+        MySqlDataAdapter adapter = new MySqlDataAdapter("CALL getLeksakPris();", dbcon);
+
+        DataSet ds = new DataSet();
+        adapter.Fill(ds, "resultSum");
+        DataTable resultSum = ds.Tables["resultSum"];
+        dbcon.Close();
+
+        return resultSum;
+    }
+
     public void Insert(string onskelista_artal, string onskelista_beskrivning, int onskelista_levererad)
     {
         MySqlConnection dbcon = new MySqlConnection(connectionString);
