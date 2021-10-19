@@ -52,6 +52,7 @@ namespace dbsk1_2018.Controllers
             ViewBag.onskelistaLevererade = sm.GetOnskelistaLevererade();
             ViewBag.dropdownListrad = sm.dropdownListradArtalModel();
             ViewBag.SearchResults = sm.visaOnskelistaDetaljer(visa_artal);
+            ViewBag.byggarnisseOne = sm.GetByggarnisseDetaljer();
             return View("Index");
         }
 
